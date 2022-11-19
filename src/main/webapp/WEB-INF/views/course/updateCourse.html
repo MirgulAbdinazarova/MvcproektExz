@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update course</title>
+</head>
+<body>
+<form  th:action="@{/course/updateCourse/{id}(id=${})" th:object="${course}" th:method="put">
+    <p>Id: <input type="hidden" th:field="*{id}"/></p>
+    <p>Name: <input type="text" th:field="*{c}" placeholder="companyName"/></p>
+    <p>Located country: <input type="text" th:field="*{locatedCountry}" placeholder="locatedCountry"/></p>
+    <p><input type="submit" value="Submit"/>
+
+</form>
+</body>
+</html>

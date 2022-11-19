@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Companies</title>
+    <style>table,
+    td {
+        border: 1px solid #333;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 25px;
+    }
+    thread,
+    tfoot {
+        background-color: #333;
+        color: #fff;
+    }
+    </style>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+<table class="table table-bordered ">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Course name</th>
+        <th>Duration</th>
+        <th>Description</th>
+        <th>Group</th>
+        <th colspan="2">Action</th>
+    </tr>
+    </thead>
+    <tbody class="table-success">
+    <tr th:each="course: ${courses}" >
+        <td th:text="${course.id}"></td>
+        <td th:text="${course.courseName}"></td>
+        <td th:text="${course.duration}"></td>
+        <td th:text="${course.description}"></td>
+        <td>
+            <a th:href = "">
+                <button>group</button>
+            </a>
+        </td>
+        <td>
+            <a th:href = "@{/course/update}">
+                <button>update</button>
+            </a>
+        </td>
+        <td >
+            <form th:method="DELETE" th:action="@{/course/delete/{id}(id=${course.getId()})}">
+                <input type="submit" class="btn btn-primary" th:value="delete">
+            </form>
+        </td>
+    </tr>
+    <a></a>
+    </tbody>
+
+</table>
+
+<form  action="#"  th:action="@{/course/new/{id}(id=${companyId})}"  method="get" >
+    <p><input type="submit" value="create new course"/></p>
+</form>
+</body>
+</html>

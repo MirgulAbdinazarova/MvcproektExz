@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Get company by id</title>
+</head>
+<body>
+<div th:object="${company}">
+    <p th:text="${company.companyName}"></p>
+    <p th:text="${company.locatedCountry}"></p>
+    <div>
+        <a type="button" class="btn btn-success" th:href="@{/allCompany}">EXIT</a>
+    </div>
+</div>
+
+</body>
+</html>

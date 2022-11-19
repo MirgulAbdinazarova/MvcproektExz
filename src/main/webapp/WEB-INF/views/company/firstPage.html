@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Companies</title>
+    <style>table,
+    td {
+        border: 1px solid #333;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 25px;
+    }
+    thread,
+    tfoot {
+        background-color: #333;
+        color: #fff;
+    }
+    </style>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+<table class="table table-bordered ">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Company name</th>
+        <th>Located country</th>
+        <th>Company courses</th>
+       <th colspan="2">Action</th>
+    </tr>
+    </thead>
+    <tbody class="table-success">
+    <tr th:each="company: ${companies}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.companyName}"></td>
+        <td th:text="${company.locatedCountry}"></td>
+        <td>
+            <a th:href = "@{/course/all/{id}(id=${company.getId()})}">
+                <button>courses</button>
+            </a>
+        </td>
+        <td>
+            <a th:href = "@{/update/(id=${company.id})}">
+                <button>update</button>
+            </a>
+        </td>
+        <td >
+            <form th:method="DELETE" th:action="@{/delete/{id}(id=${company.getId()})}">
+                <input type="submit" class="btn btn-primary" th:value="delete">
+            </form>
+<!--        <a  th:method="DELETE" th:href = "@{/delete/{id}(id=${company.id})}">-->
+<!--            <button>delete</button>-->
+<!--        </a>-->
+        </td>
+        <a th:href="@{/{companyId}(companyId=${company.getId()})}" class="=btn btn-primary">Go some where</a>
+
+    </tr>
+
+<a></a>
+    </tbody>
+
+</table>
+
+<form action="#" th:action="@{/new}" method="get">
+    <p><input type="submit" value="create new company"/></p>
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
