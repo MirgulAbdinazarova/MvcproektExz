@@ -21,7 +21,7 @@ public class CourseController {
 
     @GetMapping("/all/{id}")
     public String getAllCourses( Model model,@PathVariable Long id) {
-        model.addAttribute("courses",courseService.getAllCourses());
+        model.addAttribute("courses",courseService.getAllCourses(id));
         model.addAttribute("companyId",id);
         return "/course/mainPage";
     }
@@ -41,25 +41,24 @@ public class CourseController {
     @PostMapping("/saveCourse/{id}")
     public String saveCourse(@ModelAttribute("course") Course course, @PathVariable Long id) {
         courseService.saveCourse(course,id);
-
         return "redirect:/course/all/{id}";
     }
 
     @PostMapping("/delete/{id}")
     public String deleteCourse(@PathVariable Long id) {
         courseService.deleteCourseById(id);
-        return "redirect:/course";
+        return "redirect:/course/all/{id}";
     }
 
-    @GetMapping("/update")
-    public String edit(@RequestParam Long id,Model model) {
+    @GetMapping("/update/{id}")
+    public String edit(@PathVariable("id")Long id,Model model) {
         model.addAttribute("course",courseService.getCourseById(id));
-        return "updateCourse";
+        return "/course/updateCourse";
     }
 
     @PostMapping("/updateCourse/{id}")
-    public String  updateCourse(@ModelAttribute("course")Course course,
-                                @PathVariable("companyId") Long id) {
+    public String  updateCourse(@ModelAttribute("course")Course course
+                                ,@PathVariable Long id) {
         courseService.updateCourse(course,id);
         return "redirect:/course/all/{id}";
     }

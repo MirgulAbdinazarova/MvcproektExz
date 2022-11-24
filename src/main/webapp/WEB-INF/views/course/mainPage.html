@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Companies</title>
+    <title>Courses</title>
     <style>table,
     td {
         border: 1px solid #333;
@@ -25,30 +25,47 @@
     </style>
 </head>
 <body>
+<p></p>
+<p></p>
+<div style="background-color: dodgerblue;padding: 4px 100px">
+    <h1 style="color: white;margin-left: 200px;display: inline;">Courses</h1>
+</div>
 <table class="table table-bordered ">
     <thead>
     <tr>
-        <th>Id</th>
+        <th >Id</th>
         <th>Course name</th>
         <th>Duration</th>
         <th>Description</th>
         <th>Group</th>
+        <th>Instructor</th>
+        <th>Lessons</th>
         <th colspan="2">Action</th>
     </tr>
     </thead>
     <tbody class="table-success">
     <tr th:each="course: ${courses}" >
-        <td th:text="${course.id}"></td>
+        <td  th:text="${course.id}"></td>
         <td th:text="${course.courseName}"></td>
         <td th:text="${course.duration}"></td>
         <td th:text="${course.description}"></td>
         <td>
-            <a th:href = "">
+            <a th:href="@{/allGroup/{id}(id=${course.getId()})}" >
                 <button>group</button>
             </a>
         </td>
         <td>
-            <a th:href = "@{/course/update}">
+            <a th:href="@{/allIns/{id}(id=${course.getId()})}" >
+                <button>instructor</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/allLess/{id}(id=${course.getId()})}" >
+                <button>Lesson</button>
+            </a>
+        </td>
+        <td>
+            <a th:href = "@{/course/update/{id}(id=${companyId})}">
                 <button>update</button>
             </a>
         </td>
@@ -64,7 +81,10 @@
 </table>
 
 <form  action="#"  th:action="@{/course/new/{id}(id=${companyId})}"  method="get" >
-    <p><input type="submit" value="create new course"/></p>
+    <p><input style="background-color: mediumblue;color: white" type="submit" value="create new course"/></p>
+</form>
+<form    th:action="@{/allCompany}"  method="get" >
+    <p><input style="background-color: red;color: white" type="submit" value="<<Back to Companies "/></p>
 </form>
 </body>
 </html>

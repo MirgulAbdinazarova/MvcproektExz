@@ -5,10 +5,11 @@
     <title>Update course</title>
 </head>
 <body>
-<form  th:action="@{/course/updateCourse/{id}(id=${})" th:object="${course}" th:method="put">
+<form  th:action="@{/course/updateCourse/{id}(id=${course.id})}" th:object="${course}" th:method="put">
     <p>Id: <input type="hidden" th:field="*{id}"/></p>
-    <p>Name: <input type="text" th:field="*{c}" placeholder="companyName"/></p>
-    <p>Located country: <input type="text" th:field="*{locatedCountry}" placeholder="locatedCountry"/></p>
+    <p>Course name: <input type="text" th:field="*{courseName}" placeholder="courseName"/></p>
+    <p>Duration: <input type="text" th:field="*{duration}" placeholder="duration"/></p>
+    <p>Description: <input type="text" th:field="*{description}" placeholder="description"/></p>
     <p><input type="submit" value="Submit"/>
 
 </form>

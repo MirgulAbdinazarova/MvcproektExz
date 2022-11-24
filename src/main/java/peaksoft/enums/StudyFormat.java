@@ -1,5 +1,5 @@
 package peaksoft.enums;
 
-public enum StudyFormat {
+public  enum StudyFormat {
     ONLINE, OFFLINE;
 }

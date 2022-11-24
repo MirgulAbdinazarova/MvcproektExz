@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lessons</title>
+  <style>table,
+  td {
+    border: 1px solid #333;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+  }
+  thread,
+  tfoot {
+    background-color: #333;
+    color: #fff;
+  }
+  </style>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      padding: 3px;
+    }
+  </style>
+</head>
+<body>
+<p></p>
+<p></p>
+<div style="background-color: dodgerblue;padding: 4px 100px">
+  <h1 style="color: white;margin-left: 200px;display: inline;">Lessons</h1>
+</div>
+<table class="table table-bordered ">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Lesson name</th>
+    <th>Task</th>
+    <th colspan="2">Action</th>
+  </tr>
+  </thead>
+  <tbody class="table-success">
+  <tr th:each="lesson: ${lessons}">
+    <td th:text="${lesson.id}"></td>
+    <td th:text="${lesson.lessonName}"></td>
+    <td>
+      <a th:href = "@{/allTask/{id}(id=${lesson.getId()})}">
+        <button>task</button>
+      </a>
+    </td>
+    <td>
+      <a th:href = "@{/updateLess/{id}(id=${courseId})}">
+        <button>update</button>
+      </a>
+    </td>
+    <td >
+      <form th:method="DELETE" th:action="@{/deleteLesson/{id}(id=${lesson.getId()})}">
+        <input type="submit" class="btn btn-primary" th:value="delete">
+      </form>
+    </td>
+  </tr>
+  <a></a>
+  </tbody>
+
+</table>
+
+<form action="#" th:action="@{/newLess/{id}(id=${courseId})}" method="get">
+  <p><input type="submit" value="create new lesson"/></p>
+</form>
+<form    th:action="@{/course/all/{id}(id=${courseId})}"  method="get" >
+  <p><input type="submit" value="<<Back to Course "/></p>
+</form>
+</body>
+</html>

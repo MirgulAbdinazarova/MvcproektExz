@@ -9,7 +9,7 @@ public interface CourseService {
 
     Course getCourseById(Long id);
 
-    List<Course> getAllCourses();
+    List<Course> getAllCourses(Long id);
 
     void updateCourse(Course course,Long id);
 

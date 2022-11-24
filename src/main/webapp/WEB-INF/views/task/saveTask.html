@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New Task</title>
+</head>
+<body>
+<div style="background-color: dodgerblue;padding: 3px 50px">
+  <h1 style="color: white;margin-left: 130px;display: inline;">New task</h1>
+</div>
+<form th:method="POST" th:action="@{/saveTask/{id}(id=${lessonId})}" th:object="${task}" >
+  <div class="=mb-3">
+    <input type="hidden" name="id" th:field="*{id}">
+    <p></p>
+
+    <label style="margin-left: 150px" for="exampleInputName" class="form-label">Task name</label>
+    <input type="text"  style="width: 190px" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+           th:field="*{taskName}">
+    <div id="emailHelp" class="form-text"></div>
+    <p></p>
+
+    <div class="=mb-3">
+      <label  style="margin-left: 82px"  id="label" class="form-label">Task text</label>
+      <input type="text" class="form-control" id="local" th:field="*{taskText}">
+    </div>
+    <p></p>
+
+    <div class="=mb-3">
+      <label  style="margin-left: 82px"   class="form-label">Deadline</label>
+      <input type="text" class="form-control" id="task" th:field="*{deadline}">
+    </div>
+
+  </div>
+  <p></p>
+  <button style="margin-left: 220px" type="submit" >Save</button>
+</form>
+</body>
+</html>

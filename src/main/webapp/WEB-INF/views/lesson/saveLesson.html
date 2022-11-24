@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New Lesson</title>
+</head>
+<body>
+<div style="background-color: dodgerblue;padding: 3px 50px">
+  <h1 style="color: white;margin-left: 130px;display: inline;">New Lesson</h1>
+</div>
+<form th:method="POST" th:action="@{/saveLesson/{id}(id=${courseId})}" th:object="${lesson}" >
+  <div class="=mb-3">
+    <input type="hidden" name="id" th:field="*{id}">
+    <p></p>
+    <label style="margin-left: 150px" for="exampleInputName" class="form-label">Name</label>
+    <input type="text"  style="width: 190px" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+           th:field="*{lessonName}">
+    <div id="emailHelp" class="form-text"></div>
+    <p></p>
+    </div>
+  </div>
+  <p></p>
+  <button style="margin-left: 220px" type="submit" >Save</button>
+</form>
+</body>
+</html>

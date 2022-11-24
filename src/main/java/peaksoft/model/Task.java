@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Getter
 @Setter
@@ -21,4 +23,6 @@ public class Task {
     private String taskName;
     private String taskText;
     private int deadline;
+    @ManyToOne(cascade ={DETACH,REFRESH,MERGE},fetch = FetchType.EAGER)
+    private Lesson lesson;
 }

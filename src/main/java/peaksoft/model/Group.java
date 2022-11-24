@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.*;
@@ -14,7 +15,7 @@ import static javax.persistence.CascadeType.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "grouppa")
+@Table(name = "groups")
 public class Group {
 
     @Id
@@ -28,9 +29,24 @@ public class Group {
     private String dateOfStart;
     private String image;
 
-    @ManyToMany(cascade = {DETACH,MERGE,REFRESH},fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {DETACH,REFRESH,MERGE},fetch = FetchType.LAZY)
     @JoinTable(name = "groups_courses",
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     private List<Course> courses;
+    @OneToMany(cascade = ALL,fetch = FetchType.LAZY,mappedBy = "group")
+    private List<Student>students;
+
+    public void addCourse(Course course){
+        if(courses==null){
+            courses=new ArrayList<>();
+        }
+        courses.add(course);
+    }
+    public void addStudent(Student student) {
+        if(students== null) {
+            students = new ArrayList<>();
+        }
+        students.add(student);
+    }
 }

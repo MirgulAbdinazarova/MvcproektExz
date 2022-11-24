@@ -5,20 +5,26 @@
     <title>New Company</title>
 </head>
 <body>
+<div style="background-color: dodgerblue;padding: 3px 50px">
+    <h1 style="color: white;margin-left: 130px;display: inline;">New company</h1>
+</div>
 <form th:method="POST" th:action="@{save}" th:object="${company}" >
     <div class="=mb-3">
         <input type="hidden" name="id" th:field="*{id}">
-        <label for="exampleInputName" class="form-label">Name</label>
-        <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+        <p></p>
+        <label style="margin-left: 150px" for="exampleInputName" class="form-label">Name</label>
+        <input type="text"  style="width: 190px" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
                th:field="*{companyName}">
         <div id="emailHelp" class="form-text"></div>
+        <p></p>
         <div class="=mb-3">
-            <label for="local" class="form-label">Located Country</label>
+            <label  style="margin-left: 82px"  id="label" class="form-label">Located Country</label>
+
             <input type="text" class="form-control" id="local" th:field="*{locatedCountry}">
         </div>
     </div>
-
-    <button type="submit" >Save</button>
+<p></p>
+    <button style="margin-left: 220px" type="submit" >Save</button>
 </form>
 </body>
 </html>

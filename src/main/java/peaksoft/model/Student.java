@@ -7,6 +7,8 @@ import peaksoft.enums.StudyFormat;
 
 import javax.persistence.*;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Getter
 @Setter
@@ -24,4 +26,6 @@ public class Student {
     private int phoneNumber;
     private String email;
     private StudyFormat studyFormat;
+    @ManyToOne(cascade = {DETACH,REFRESH,MERGE},fetch = FetchType.EAGER)
+    private Group group;
 }

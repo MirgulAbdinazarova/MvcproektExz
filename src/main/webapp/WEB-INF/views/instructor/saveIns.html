@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New Instructor</title>
+</head>
+<body>
+<div style="background-color: dodgerblue;padding: 3px 50px">
+  <h1 style="color: white;margin-left: 130px;display: inline;">New instructor</h1>
+</div>
+<form th:method="POST" th:action="@{/saveIns/{id}(id=${courseId})}" th:object="${instructor}" >
+  <div class="=mb-3">
+    <input type="hidden" name="id" th:field="*{id}">
+    <p></p>
+    <label style="margin-left: 150px" for="exampleInputName" class="form-label">First name</label>
+    <input type="text"  style="width: 190px" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+           th:field="*{firstName}">
+    <div id="emailHelp" class="form-text"></div>
+    <p></p>
+    <div class="=mb-3">
+      <label  style="margin-left: 82px"  id="label" class="form-label">Last name</label>
+
+      <input type="text" class="form-control" id="lastName" th:field="*{lastName}">
+    </div>
+    <p></p>
+    <div class="=mb-3">
+      <label  style="margin-left: 82px"   class="form-label">Phone number</label>
+
+      <input type="number" class="form-control"  th:field="*{phoneNumber}">
+    </div>
+    <p></p>
+    <div class="=mb-3">
+      <label  style="margin-left: 82px"   class="form-label">Email</label>
+
+      <input type="text" class="form-control"  th:field="*{email}">
+    </div>
+    <p></p>
+    <div class="=mb-3">
+      <label  style="margin-left: 82px"   class="form-label">Specialization</label>
+
+      <input type="text" class="form-control"  th:field="*{specialization}">
+    </div>
+  </div>
+  <p></p>
+  <button style="margin-left: 220px" type="submit" >Save</button>
+</form>
+</body>
+</html>

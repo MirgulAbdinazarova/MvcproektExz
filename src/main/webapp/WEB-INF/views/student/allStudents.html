@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Students</title>
+  <style>table,
+  td {
+    border: 1px solid #333;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+  }
+  thread,
+  tfoot {
+    background-color: #333;
+    color: #fff;
+  }
+  </style>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      padding: 3px;
+    }
+  </style>
+</head>
+<body>
+<table class="table table-bordered ">
+  <thead>
+  <tr>
+    <th >Id</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Phone number</th>
+    <th>email</th>
+<!--    <th>StudyFormat</th>-->
+    <th colspan="2">Action</th>
+  </tr>
+  </thead>
+  <tbody class="table-success">
+  <tr th:each="student: ${students}" >
+    <td  th:text="${student.id}"></td>
+    <td th:text="${student.firstName}"></td>
+    <td th:text="${student.lastName}"></td>
+    <td th:text="${student.phoneNumber}"></td>
+    <td th:text="${student.email}"></td>
+<!--    <td th:text="${student.studyFormat}"></td>-->
+    <td>
+      <a th:href = "@{/findStudent/{id}(id=${groupId})}">
+        <button>update</button>
+      </a>
+    </td>
+    <td >
+      <form th:method="DELETE" th:action="@{/deleteStudent/{id}(id=${student.getId()})}">
+        <input type="submit" class="btn btn-primary" th:value="delete">
+      </form>
+    </td>
+  </tr>
+  <a></a>
+  </tbody>
+
+</table>
+
+<form  action="#"  th:action="@{/newStudent/{id}(id=${groupId})}"  method="get" >
+  <p><input type="submit" value="create new student"/></p>
+</form>
+<form    th:action="@{/allGroup/{id}(id=${groupId})}"  method="get" >
+  <p><input type="submit" value="<<Back to Group "/></p>
+</form>
+</body>
+</html>
