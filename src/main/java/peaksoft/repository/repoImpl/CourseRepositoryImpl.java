@@ -15,7 +15,7 @@ public class CourseRepositoryImpl  implements CourseRepository {
     @PersistenceContext
     private EntityManager entityManager;
     @Override
-    public void saveCourse(Course course, Long id) {
+    public void saveCourse(Course course,Long id) {
      Company company = entityManager.find(Company.class,id);
      company.addCourse(course);
      course.setCompany(company);

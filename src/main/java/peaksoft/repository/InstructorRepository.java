@@ -4,11 +4,12 @@ import peaksoft.model.Group;
 import peaksoft.model.Instructor;
 import peaksoft.model.Student;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface InstructorRepository {
 
-    void assignInstructorToCourse(Long instructorId,Long courseId);
+    void assignInstructorToCourse(Long instructorId,Long courseId) throws IOException;
 
     List<Instructor> getAllInstructors(Long id);
 

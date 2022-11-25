@@ -37,6 +37,7 @@
         <th>Course name</th>
         <th>Duration</th>
         <th>Description</th>
+        <th>Assign</th>
         <th>Group</th>
         <th>Instructor</th>
         <th>Lessons</th>
@@ -49,6 +50,18 @@
         <td th:text="${course.courseName}"></td>
         <td th:text="${course.duration}"></td>
         <td th:text="${course.description}"></td>
+        <td>
+            <form th:method="POST"
+                  th:action="@{/course/{courseId}/assign(courseId=${course.getId()})}">
+                <select name="instructor" class="form-select form-select-sm" aria-label=".form-select-sm example"
+                        th:object="${group}" th:field="*{id}">
+                    <option th:each="group : ${groups}"
+                            th:value="${group.id}"
+                            th:text="${group.groupName}"></option>
+                </select>
+                <input type="submit" value="submit"/>
+            </form>
+        </td>
         <td>
             <a th:href="@{/allGroup/{id}(id=${course.getId()})}" >
                 <button>group</button>
@@ -81,10 +94,10 @@
 </table>
 
 <form  action="#"  th:action="@{/course/new/{id}(id=${companyId})}"  method="get" >
-    <p><input style="background-color: mediumblue;color: white" type="submit" value="create new course"/></p>
+    <p><input style="background-color: dodgerblue;color: white" type="submit" value="create new course"/></p>
 </form>
 <form    th:action="@{/allCompany}"  method="get" >
-    <p><input style="background-color: red;color: white" type="submit" value="<<Back to Companies "/></p>
+    <p><input style="background-color: dodgerblue;color: black" type="submit" value="<<Back to Companies "/></p>
 </form>
 </body>
 </html>

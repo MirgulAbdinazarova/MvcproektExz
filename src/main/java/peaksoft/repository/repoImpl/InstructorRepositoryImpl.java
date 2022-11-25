@@ -8,6 +8,7 @@ import peaksoft.repository.InstructorRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.List;
 @Repository
 @Transactional
@@ -16,9 +17,16 @@ public class InstructorRepositoryImpl implements InstructorRepository {
     private EntityManager entityManager;
 
     @Override
-    public void assignInstructorToCourse(Long instructorId, Long courseId) {
+    public void assignInstructorToCourse(Long instructorId, Long courseId) throws IOException {
         Instructor instructor = entityManager.find(Instructor.class,instructorId);
         Course course = entityManager.find(Course.class,courseId);
+        if(course.getInstructors()!=null) {
+            for(Instructor i:course.getInstructors()) {
+                if(i.getId() == instructorId) {
+                    throw new IOException("This instructor already exists");
+                }
+            }
+        }
         instructor.setCourse(course);
         course.getInstructors().add(instructor);
         entityManager.merge(instructor);
@@ -36,7 +44,7 @@ public class InstructorRepositoryImpl implements InstructorRepository {
         Course course = entityManager.find(Course.class,id);
         course.addInstructor(instructor);
         instructor.setCourse(course);
-     entityManager.merge(instructor);
+        entityManager.merge(instructor);
     }
 
     @Override

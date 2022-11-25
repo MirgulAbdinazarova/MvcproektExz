@@ -7,7 +7,7 @@ import java.util.List;
 public interface GroupService {
 
 //    void saveGroup(Group group, Long id);
-    void saveGroup(Group group);
+    void saveGroup(Long id,Group group);
 
     List<Group> getAllGroups(Long courseId);
 
@@ -17,4 +17,6 @@ public interface GroupService {
     void deleteGroupById(Long id);
 
     Group getGroupById(Long id);
+
+    void assignGroupToCourse(Long groupId,Long courseId);
 }

@@ -96,7 +96,7 @@
     <div class="card" style="width: 28%"  th:each="group:${groups}">
         <img  th:src="${group.getImage()}"  object-fit width="223" height="170px" class="card-img-top" alt="Image">
         <div class="card-body">
-<!--            <h5 class="card-title" th:text="${group.getId()}">Card title</h5>-->
+            <h5 class="card-title" th:text="${group.id}">Card title</h5>
             <h2 class="card-text" th:text="${group.getGroupName()}"></h2>
             <p class="card-text" th:text="${group.getDateOfStart()}"></p>
 
@@ -122,6 +122,10 @@
 
 <form    th:action="@{/course/all/{id}(id=${courseId})}"  method="get" >
     <p><input type="submit" value="<<Back to Course "/></p>
+</form>
+
+<form    th:action="@{/allCompany}"  method="get" >
+    <p><input style="background-color: dodgerblue;color: black" type="submit" value="<<Back to Companies "/></p>
 </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

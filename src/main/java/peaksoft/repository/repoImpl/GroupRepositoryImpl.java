@@ -27,7 +27,10 @@ public class GroupRepositoryImpl implements GroupRepository {
 //    }
 
     @Override
-    public void saveGroup(Group group) {
+    public void saveGroup(Long id,Group group) {
+        Course course = entityManager.find(Course.class,id);
+        course.addGroup(group);
+        group.addCourse(course);
         entityManager.merge(group);
     }
 
@@ -62,5 +65,15 @@ public class GroupRepositoryImpl implements GroupRepository {
     @Override
     public Group getGroupById(Long id) {
         return entityManager.find(Group.class,id);
+    }
+
+    @Override
+    public void assignGroupToCourse(Long groupId,Long courseId) {
+        Group group = entityManager.find(Group.class,groupId);
+        Course course = entityManager.find(Course.class,courseId);
+        group.getCourses().add(course);
+        course.getGroups().add(group);
+        entityManager.merge(group);
+        entityManager.merge(course);
     }
 }

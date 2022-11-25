@@ -8,7 +8,7 @@ import java.util.List;
 public interface GroupRepository {
 
 //    void saveGroup(Group group, Long id);
-    void saveGroup(Group group);
+    void saveGroup(Long id,Group group);
 
     List<Group> getAllGroups(Long courseId);   //course id
 
@@ -18,4 +18,6 @@ public interface GroupRepository {
     void deleteGroupById(Long id);
 
     Group getGroupById(Long id);
+
+     void assignGroupToCourse(Long groupId,Long courseId);
 }

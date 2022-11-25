@@ -59,18 +59,16 @@
             <form th:method="DELETE" th:action="@{/delete/{id}(id=${company.getId()})}">
                 <input type="submit" class="btn btn-primary" th:value="delete">
             </form>
-<!--        <a  th:method="DELETE" th:href = "@{/delete/{id}(id=${company.id})}">-->
-<!--            <button>delete</button>-->
-<!--        </a>-->
         </td>
     </tr>
 <a></a>
     </tbody>
 
 </table>
-
+<p></p>
+<p></p>
 <form action="#" th:action="@{/new}" method="get">
-    <p><input type="submit" value="create new company"/></p>
+    <p><input style="margin-left: 220px;background-color:dodgerblue;color: white" type="submit" value="create new company"/></p>
 </form>
 
 </body>

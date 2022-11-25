@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,47 +20,50 @@ import static javax.persistence.CascadeType.*;
 public class Course {
 
     @Id
+    @SequenceGenerator(name = "course_seq",sequenceName = "course_seq",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_seq")
-    @SequenceGenerator(name = "course_seq",
-            sequenceName = "course_seq",
-            allocationSize = 1)
     private Long id;
 
-    @Column(name = "course_name",length = 50000 )
+    @Column(name = "course_name", length = 50000)
+//    @NotEmpty(message = "Course name should not be empty")
     private String courseName;
-    @Column(name = "duration",length = 50000 )
+
+    @Column(name = "duration", length = 50000)
+
     private int duration;
-    @Column(name = "discription",length = 50000 )
+    //
+    @Column(name = "discription", length = 50000)
     private String description;
 
-    @ManyToOne(cascade = {DETACH,REFRESH,MERGE},fetch = FetchType.EAGER)
-      private Company company;
+    @ManyToOne(cascade = {DETACH, REFRESH, MERGE}, fetch = FetchType.EAGER)
+    private Company company;
 
-    @ManyToMany(cascade = ALL,mappedBy = "courses",fetch = FetchType.LAZY)
-   private List<Group> groups;
+    @ManyToMany(cascade = ALL, fetch = FetchType.LAZY,mappedBy = "courses")
+    private List<Group> groups;
 
-    @OneToMany(cascade = ALL,fetch = FetchType.LAZY,mappedBy = "course")
-    private List<Instructor>instructors;
-    @OneToMany(cascade =ALL,fetch = FetchType.LAZY,mappedBy = "course")
-    private List<Lesson>lessons;
+    @OneToMany(cascade = ALL, fetch = FetchType.LAZY, mappedBy = "course")
+    private List<Instructor> instructors;
+    @OneToMany(cascade = ALL, fetch = FetchType.LAZY, mappedBy = "course")
+    private List<Lesson> lessons;
 
 
-    public void addGroup(Group group){
-        if(groups==null){
-            groups=new ArrayList<>();
+    public void addGroup(Group group) {
+        if (groups == null) {
+            groups = new ArrayList<>();
         }
         groups.add(group);
     }
-    public void addLesson(Lesson lesson){
-        if(lessons==null){
-            lessons=new ArrayList<>();
+
+    public void addLesson(Lesson lesson) {
+        if (lessons == null) {
+            lessons = new ArrayList<>();
         }
         lessons.add(lesson);
     }
 
     public void addInstructor(Instructor instructor) {
-        if(instructors == null) {
-            instructors=new ArrayList<>();
+        if (instructors == null) {
+            instructors = new ArrayList<>();
         }
         instructors.add(instructor);
     }

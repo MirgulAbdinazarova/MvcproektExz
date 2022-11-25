@@ -33,7 +33,7 @@
     <th>Last name</th>
     <th>Phone number</th>
     <th>email</th>
-<!--    <th>StudyFormat</th>-->
+    <th>StudyFormat</th>
     <th colspan="2">Action</th>
   </tr>
   </thead>
@@ -44,7 +44,7 @@
     <td th:text="${student.lastName}"></td>
     <td th:text="${student.phoneNumber}"></td>
     <td th:text="${student.email}"></td>
-<!--    <td th:text="${student.studyFormat}"></td>-->
+    <td th:text="${student.studyFormat}"></td>
     <td>
       <a th:href = "@{/findStudent/{id}(id=${groupId})}">
         <button>update</button>

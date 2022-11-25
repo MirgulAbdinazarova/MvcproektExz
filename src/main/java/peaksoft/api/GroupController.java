@@ -48,7 +48,7 @@ public class GroupController {
     }
     @PostMapping("/saveGroup/{id}")
     public String saveCourse(@ModelAttribute("group") Group group,@PathVariable Long id) {
-        groupService.saveGroup(group);
+        groupService.saveGroup(id,group);
         return "redirect:/allGroup/{id}";
     }
     @GetMapping("/findGroup/{id}")
@@ -65,5 +65,12 @@ public class GroupController {
 
         return "redirect:/allGroup/{id}";
     }
+//    @GetMapping("/{groupId}/{courseId}/assign")
+//    public String assignGroupToCourse(@PathVariable Long groupId,
+//                                      @PathVariable Long courseId,@ModelAttribute("group")Group group) {
+//
+//         groupService.assignGroupToCourse(groupId,courseId);
+//         return "redirect:/allGroup/{id}";
+//    }
 
 }

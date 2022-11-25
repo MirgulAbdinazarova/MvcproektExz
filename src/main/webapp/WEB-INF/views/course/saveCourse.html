@@ -2,33 +2,36 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New Course</title>
+    <title>New Instructor</title>
 </head>
 <body>
 <div style="background-color: dodgerblue;padding: 3px 50px">
-    <h1 style="color: white;margin-left: 130px;display: inline;">New course</h1>
+    <h1 style="color: white;margin-left: 150px;display: inline;">New course</h1>
 </div>
-<p></p>
 <form th:method="POST" th:action="@{/course/saveCourse/{id}(id=${companyId})}" th:object="${course}" >
     <div class="=mb-3">
-        <label  style="margin-left: 150px" for="exampleInputName" class="form-label">Name</label>
-        <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
+        <input type="hidden" name="id" th:field="*{id}">
+        <p></p>
+        <label style="margin-left: 150px" for="exampleInputName" class="form-label">Course Name</label>
+        <input type="text"  style="width: 190px" class="form-control" id="exampleInputName" aria-describedby="emailHelp"
                th:field="*{courseName}">
-        <p></p>
         <div id="emailHelp" class="form-text"></div>
+        <p></p>
         <div class="=mb-3">
-            <label  style="margin-left: 130px" for="local" class="form-label">Duration</label>
-            <input type="text" class="form-control" id="local" th:field="*{duration}">
+            <label  style="margin-left: 150px"  id="label" class="form-label">Duration</label>
+
+            <input type="text" class="form-control" id="lastName" th:field="*{duration}">
         </div>
         <p></p>
         <div class="=mb-3">
-            <label style="margin-left: 112px" for="local" class="form-label">Description</label>
-            <input type="text" class="form-control" id="description" th:field="*{description}">
+            <label  style="margin-left: 150px"   class="form-label">Description</label>
+
+            <input type="text" class="form-control"  th:field="*{description}">
         </div>
+
     </div>
     <p></p>
-    <button  style="margin-left: 180px; background-color: indigo; color: white" type="submit"  >Save</button>
-
+    <button style="margin-left: 250px" type="submit" >Save</button>
 </form>
 </body>
 </html>

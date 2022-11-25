@@ -23,8 +23,8 @@ public class GroupServiceImpl implements GroupService {
 //        groupRepository.saveGroup(group,id);
 //    }
     @Override
-    public void saveGroup(Group group) {
-        groupRepository.saveGroup(group);
+    public void saveGroup(Long id,Group group) {
+        groupRepository.saveGroup(id,group);
     }
 
     @Override
@@ -45,5 +45,10 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public Group getGroupById(Long id) {
         return groupRepository.getGroupById(id);
+    }
+
+    @Override
+    public void assignGroupToCourse(Long groupId, Long courseId) {
+        groupRepository.assignGroupToCourse(groupId,courseId);
     }
 }

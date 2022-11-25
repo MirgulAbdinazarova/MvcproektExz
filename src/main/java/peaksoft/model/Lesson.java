@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class Lesson {
             allocationSize = 1)
     private Long id;
 
+//     @NotNull(message = "Lesson name cannot be null")
     private String lessonName;
 
     @ManyToOne(cascade = {DETACH,REFRESH,MERGE},fetch = FetchType.EAGER)
